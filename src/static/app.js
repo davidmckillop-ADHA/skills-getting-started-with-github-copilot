@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchActivities() {
     try {
-      const response = await fetch("/activities");
+      const response = await fetch("/activities", { cache: "no-store" });
       const activities = await response.json();
 
       activitiesList.innerHTML = "";
@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `/activities/${encodeURIComponent(activity)}/signup?email=${encodeURIComponent(email)}`,
         {
           method: "POST",
+          cache: "no-store",
         }
       );
 
@@ -112,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `/activities/${encodeURIComponent(activityName)}/participants/${encodeURIComponent(participantEmail)}`,
         {
           method: "DELETE",
+          cache: "no-store",
         }
       );
 
